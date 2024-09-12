@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> plant store</title>
+    <style>
+
+       
+    /* Base Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background-color: #333;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 24px;
+    color: white;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.product-container {
+    display: flex;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    max-width: 1500px;
+    background-color: #f9f9f9;
+}
+
+.product-image img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.product-details {
+    margin-left: 20px;
+}
+
+.product-name {
+    font-size: 24px;
+    color: #333;
+}
+
+.product-description {
+    margin: 10px 0;
+    color: #555;
+}
+
+.product-price {
+    font-size: 20px;
+    color: #e74c3c;
+}
+
+.buynow, .add-to-cart {
+    padding: 10px 15px;
+    background-color: #27ae60;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.buynow:hover, .add-to-cart:hover {
+    background-color: #2ecc71;
+}
+
+.reviews-container {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 1500px;
+}
+
+.reviews-container h3 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.review {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.review-author {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.review-text {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.review-rating {
+    color: #ff9800;
+    font-size: 14px;
+}
+
+footer {
+    background-color: #333;
+    padding: 20px 10%;
+    text-align: center;
+    border-top: 1px solid #dddddd;
+}
+
+footer p {
+    margin-bottom: 10px;
+    color: white;
+}
+
+footer ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+footer li {
+    color: white;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+
+footer ul li a:hover {
+    color: #e4a69a; /* Soft pink color */
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .logo {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .product-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .product-details {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .reviews-container {
+        padding: 10px;
+    }
+
+    .review-text {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 10px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .product-container {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .product-name {
+        font-size: 20px;
+    }
+
+    .product-price {
+        font-size: 18px;
+    }
+
+    .buynow, .add-to-cart {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .review-text {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-container {
+        flex-direction: column;
+        align-items: center;
+        margin: 5px;
+        padding: 5px;
+    }
+
+    .product-name {
+        font-size: 18px;
+    }
+
+    .product-price {
+        font-size: 16px;
+    }
+
+    .buynow, .add-to-cart {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .review-text {
+        font-size: 10px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">plant store</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="index.html">AboutUs</a></li>
+                <li><a href="index.html">ContactUs</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="product.html "> Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div class="product-container">
+        <div class="product-image">
+            <img src= "images/bomboo.jpg" alt="bamboo plant">
+        </div>
+        <div class="product-details">
+            <h2 class="product-name"> Bamboo plant pot.</h2>
+            <p class="product-description"><ol>
+       " This elegant bamboo plant pot is crafted from 100% natural bamboo, 
+         offering a sustainable and eco-friendly option for your indoor plants.
+        The pot has a smooth, polished finish that highlights the natural grain and warmth of bamboo.
+         It features a drainage hole at the bottom to ensure proper water management,
+         making it ideal for a variety of houseplants, including succulents, herbs, and small flowers".</ol>                
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/6aoeufj8ib4?si=1WCDr18SOdl6C07m"
+                   title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+
+                  </iframe>
+            <p class="product-price">MRP :899</p>
+            <button class="buynow">Buy Now</button>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+
+
+    <div class="reviews-container">
+        <h3>Customer Reviews</h3>
+        <div class="review">
+            <p class="review-author">Apple</p>
+            <p class="review-text"> 
+                - "I love this bamboo plant pot! The craftsmanship is top-notch,
+                 and it looks even better in person. The smooth finish really brings out the beauty of the bamboo.
+                  Plus, it’s lightweight yet sturdy, and the drainage hole is perfect for my succulents. 
+                  Highly recommend it!"        
+
+            </p>
+            <p class="review-rating">Rating: ★★★★★</p>
+        </div>
+        <div class="review">
+            <p class="review-author">Ajay</p>
+            <p class="review-text">
+                "I was looking for something eco-friendly to match my home decor,
+                 and this bamboo pot is perfect. It’s stylish, natural, and sustainable.
+                  My plants have been thriving in it, and I appreciate that it’s made from renewable materials.
+                   I’m considering buying more for other rooms."               
+
+            </p>
+            <p class="review-rating">Rating: ★★★★☆</p>
+        </div>
+        <div class="review">
+            <p class="review-author">Priya</p>
+            <p class="review-text">
+                "This bamboo pot is beautiful, and I love the natural look it adds to my room. 
+                However, I wish it was available in a larger size for my bigger plants. It’s perfect for smaller plants,
+                 but for anything larger, you might need to look for a bigger option.Still, it’s a great buy!"
+                
+            </p>
+            <p class="review-rating">Rating: ★★★☆☆</p>
+        </div>
+        <footer>
+        <p>&copy; plant store. All rights reserved.</p>
+        <ul>
+            <li>Privacy Policy</li>
+            <li>Terms of Service</li>
+        </ul>
+    </footer>
+
+</body>
+</html>

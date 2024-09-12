@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: block;
+        }
+
+        nav ul a:hover {
+            background-color: #45a049;
+        }
+
+        #order-history {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #order-history h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        #order-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .product {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .product img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .product h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .product p {
+            margin: 0;
+            color: #666;
+        }
+
+        .delivery-info {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #4CAF50;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul a {
+                padding: 8px 15px;
+            }
+
+            .product {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .product img {
+                width: 80px;
+            }
+
+            .product h3 {
+                font-size: 1rem;
+            }
+
+            .product p {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product img {
+                width: 70px;
+            }
+
+            .product h3 {
+                font-size: 0.9rem;
+            }
+
+            .product p {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Order History</h1>
+            <nav>
+                <ul>
+                    <a href="index.html">Home</a>
+                    <a href="cart.html">Cart</a>
+                    <a href="product.html">Product Catalog</a>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="order-history">
+        <h2>Your Orders</h2>
+        <div id="order-list"></div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const orderList = document.getElementById('order-list');
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+            if (cartItems.length === 0) {
+                orderList.innerHTML = '<p>No orders found.</p>';
+            } else {
+                cartItems.forEach(item => {
+                    const productDiv = document.createElement('div');
+                    productDiv.classList.add('product');
+                    productDiv.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <h3>${item.name}</h3>
+                        <p>Price: ₹${item.price}</p>
+                        <p class="delivery-info">Your product will be received in 3 days.</p>
+                    `;
+                    orderList.appendChild(productDiv);
+                });
+            }
+        });
+    </script>
+</body>
+<footer>
+    <div class="container">
+        <p>&copy; 2024 plant Store | All Rights Reserved</p>
+    </div>
+</footer>
+</body>
+</html>
