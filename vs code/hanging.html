@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> plant store</title>
+    <style>
+     
+
+     body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background-color: #333;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-size: 24px;
+            color:white;
+        
+        }
+        
+         nav ul {
+            list-style: none;
+            display: flex;
+        }
+        
+         nav ul li {
+            margin-left: 20px;
+        }
+        
+         nav ul li a {
+            color: #fff;
+              text-decoration: none;
+            font-size: 16px;
+        }
+        
+         nav ul li a:hover {
+            text-decoration: underline;
+        }
+        
+        
+    
+        .product-container {
+            display: flex;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            max-width: 1500px;
+            background-color: #f9f9f9;
+        }
+        
+        .product-image img {
+            max-width: 500px;
+            border-radius: 8px;
+        }
+        
+        .product-details {
+            margin-left: 20px;
+        }
+        
+        .product-name {
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .product-description {
+            margin: 10px 0;
+            color: #555;
+        }
+        
+        .product-price {
+            font-size: 20px;
+            color: #e74c3c;
+        }
+        .buynow {
+            padding: 10px 15px;
+            background-color: #27ae60;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .buynow:hover {
+            background-color: #2ecc71;
+        }
+        
+        
+        .add-to-cart {
+            padding: 10px 15px;
+            background-color: #27ae60;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #2ecc71;
+        }
+        .reviews-container {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 1500px;
+        }
+        
+        .reviews-container h3 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .review {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .review-author {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .review-text {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .review-rating {
+            color: #ff9800;
+            font-size: 14px;
+        }
+        
+
+        footer {
+            background-color:#333;
+            padding: 20px 10%;
+            text-align: center;
+            border-top: 1px solid #dddddd;
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        footer ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        footer li{
+            color: white;
+        }
+        
+        footer ul li a {
+            text-decoration: none;
+            color:white;
+            font-size: 14px;
+        }
+        
+        footer ul li a:hover {
+            color: #e4a69a; /* Soft pink color */
+        }
+
+/* MEDIA QUERIES for Responsiveness */
+
+/* Mobile screens */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 10px 5%;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav ul li {
+        margin-left: 0;
+    }
+
+    .product-container {
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+    }
+
+    .product-details {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .product-image img {
+        max-width: 80%; /* Smaller image for mobile */
+    }
+
+    .buynow, .add-to-cart {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .reviews-container {
+        padding: 10px;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 1024px) {
+    header {
+        padding: 15px 5%;
+    }
+
+    .product-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-image img {
+        max-width: 70%;
+    }
+
+    .product-details {
+        margin-left: 0;
+        text-align: center;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">plant store</div>
+        <nav>
+            <ul>
+                <li><a href="plant.html">Home</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="plant.html">AboutUs</a></li>
+                <li><a href="plant.html">ContactUs</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="product.html "> Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div class="product-container">
+        <div class="product-image">
+            <img src=  "C:\Users\M.RITHIKA\Downloads\senecio air hanging planter.jpg" alt="hanging plant">
+        </div>
+        <div class="product-details">
+            <h2 class="product-name"> hanger planter.</h2>
+            <p class="product-description">
+                This elegant hanging plant pot is a perfect addition to any indoor or outdoor space. 
+                Made from high-quality ceramic, the pot features a sleek, minimalist design with a glossy finish that complements a variety of decor styles.
+                The pot measures 8 inches in diameter and 5 inches in height, providing ample space for small to medium-sized plants.
+                It comes with a sturdy macrame rope hanger, which is adjustable to fit different ceiling heights. 
+                The pot also includes a drainage hole at the bottom, ensuring proper water flow and preventing root rot.
+                 Ideal for displaying succulents, trailing vines, or small flowers,
+                this hanging plant pot adds a touch of greenery and style to your home or garden.
+
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/sDAEcbxvyM4?si=nV77PW0Ws5XhNwni"
+                 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+
+                </iframe>
+                
+
+            <p class="product-price">MRP :2000</p>
+            <button class="buynow">Buy Now</button>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+
+
+    <div class="reviews-container">
+        <h3>Customer Reviews</h3>
+        <div class="review">
+            <p class="review-author"> Nandhu</p>
+            <p class="review-text">
+                "The design of this pot is beautiful, and it really adds a modern touch to my living room. 
+                However, I was a bit surprised by the size—it’s smaller than I anticipated.
+                 I could only fit a few small plants inside. The quality is great, though, and the drainage hole works well.
+                  Just make sure to check the dimensions before purchasing."
+            </p>
+            <p class="review-rating">Rating: ★★★★★</p>
+        </div>
+        <div class="review">
+            <p class="review-author" >Yuva</p>
+            <p class="review-text">
+                " Absolutely love it"!
+                
+            </p>
+            <p class="review-rating">Rating: ★★★★☆</p>
+        </div>
+        <div class="review">
+            <p class="review-author">Rithika</p>
+            <p class="review-text"> 
+                "I absolutely love this hanging plant pot! The quality is fantastic, 
+                and it looks even better in person. The macrame rope is very strong, and I appreciate that it's adjustable.
+                 My succulents fit perfectly, and the drainage hole is a lifesaver for preventing overwatering.
+                  I've received so many compliments on it. Highly recommend!"
+
+                
+
+            </p>
+            <p class="review-rating">Rating: ★★★☆☆</p>
+        </div>
+        <footer>
+        <p>&copy; plant store. All rights reserved.</p>
+        <ul>
+            <li>Privacy Policy</li>
+            <li>Terms of Service</li>
+        </ul>
+    </footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

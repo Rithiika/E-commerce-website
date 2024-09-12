@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>  /* cartstyle.css */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background: #010c02;
+            color: #fff;
+            padding: 1rem;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        #cart {
+    margin: 20px;
+        }
+
+     .cart-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+     }
+
+
+    .cart-item img {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+    }
+
+
+   .cart-item p {
+    margin: 0;
+    padding: 0;
+   }
+
+    .cart-item button {
+    margin-left: auto;
+
+    }
+
+    #checkout {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    }
+    button {
+            padding: 10px 20px;
+            background: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #555;
+        }
+
+        .summary {
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+        footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+
+@media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 0;
+            }
+
+            nav ul a {
+                margin: 10px 0;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .cart-item img {
+                margin: 0 0 10px 0;
+            }
+
+            #checkout {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            .summary {
+                font-size: 1rem;
+            }
+
+            button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+
+
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Shopping Cart</h1>
+            <nav>
+                <ul>
+                    <a href="plant.html">Home</a>
+                    <a href="plant.html">About Us</a>
+                    <a href="plant.html">Contact Us</a>
+                    <a href="product.html">Product Catalog</a>
+                    <a href="cart.html">Cart</a>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section id="cart-items">
+        <h2>Your Cart</h2>
+        <div id="cart-list">
+            <!-- Items will be dynamically added here -->
+        </div>
+        <div class="summary">
+            <p id="item-count">Items: 0</p>
+            <p id="total-price">Total Price: ₹0</p>
+        </div>
+        <form action="pay.html">
+                    <button  id="checkout" >Pay Now</a>
+        </button>
+        </form>
+    </section>
+    <script>
+        // cart.js
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartList = document.getElementById('cart-list');
+            const itemCountElement = document.getElementById('item-count');
+            const totalPriceElement = document.getElementById('total-price');
+
+            // Load cart items from localStorage
+            const loadCart = () => {
+                cartList.innerHTML = '';
+                const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+                let totalPrice = 0;
+
+                cartItems.forEach((item, index) => {
+                    totalPrice += parseFloat(item.price);
+
+                    const cartItemDiv = document.createElement('div');
+                    cartItemDiv.className = 'cart-item';
+                    cartItemDiv.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <div>
+                            <h3>${item.name}</h3>
+                            <p>Price: ₹${item.price}</p>
+                        </div>
+                        <button class="remove-item" data-index="${index}">Remove</button>
+                    `;
+                    cartList.appendChild(cartItemDiv);
+                });
+
+                // Update item count and total price
+                itemCountElement.textContent = `Items: ${cartItems.length}`;
+                totalPriceElement.textContent = `Total Price: ₹${totalPrice}`;
+            };
+
+            // Remove item from cart
+            cartList.addEventListener('click', (e) => {
+                if (e.target.classList.contains('remove-item')) {
+                    const index = e.target.dataset.index;
+                    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+                    cartItems.splice(index, 1);
+                    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                    loadCart();
+                }
+            });
+
+            // Initialize cart
+            loadCart();
+        });
+
+        
+    </script>
+</body>
+<footer>
+    <div class="container">
+        <p>&copy; 2024 plant Store | All Rights Reserved</p>
+    </div>
+</footer>
+</body>
+</html>
